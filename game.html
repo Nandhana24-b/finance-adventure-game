@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance Game for Kids</title>
-    <!-- Link to Google Fonts for better typography -->
+    <title>Finance Adventure Game</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
@@ -12,100 +11,125 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
             overflow-x: hidden;
-            background-color: #ae93ed;
-        }
-        
-        /* Page Layout */
-        .landing-page {
-            height: 100vh;
-            background-image: url('background.jpg'); /* Add a cool background image */
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
         }
 
         h1 {
-            font-size: 4rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            animation: fadeIn 2s ease-in-out;
+            text-align: center;
+            font-size: 3rem;
+            color: #ff6200;
+            margin-top: 20px;
         }
 
-        p {
+        #gameStats {
+            text-align: center;
+            margin: 20px;
+        }
+
+        #gameStats p {
             font-size: 1.5rem;
-            margin-bottom: 30px;
-            animation: fadeIn 3s ease-in-out;
+            color: #ff6200;
+            margin: 5px 0;
         }
 
-        .start-btn {
+        /* Canvas container for the game */
+        .game-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        canvas {
+            background-color: #f1f1f1;
+            border: 2px solid #ddd;
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+
+        /* Button to restart game */
+        .restart-btn {
+            display: block;
             background-color: #ff6200;
             color: white;
             font-size: 1.5rem;
-            padding: 15px 40px;
+            padding: 15px 30px;
             border: none;
-            border-radius: 30px;
+            border-radius: 25px;
+            margin-top: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            animation: fadeIn 4s ease-in-out;
+            margin-bottom: 30px;
         }
 
-        .start-btn:hover {
+        .restart-btn:hover {
             background-color: #e55b00;
             transform: scale(1.1);
         }
 
+        /* Game Over screen styling */
+        #endMessage {
+            text-align: center;
+            display: none;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        /* Footer */
         .footer {
             position: absolute;
             bottom: 10px;
             width: 100%;
             text-align: center;
             color: #555;
+            font-size: 1rem;
         }
 
-        /* Animation */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3rem;
-            }
-
-            p {
-                font-size: 1.2rem;
-            }
-
-            .start-btn {
-                font-size: 1.2rem;
-                padding: 12px 30px;
-            }
+        /* Toy Symbol (Emoji) */
+        #toySymbol {
+            position: absolute;
+            top: 50px;
+            left: 300px;
+            font-size: 3rem;
+            display: none;
+            color: #ff6200;
         }
     </style>
 </head>
 <body>
 
-    <div class="landing-page">
-        <h1>Welcome to Finance Adventure!</h1>
-        <p>Learn to manage your money while having fun! Save up for toys, games, and more!</p>
-        <button class="start-btn" onclick="window.location.href='game.html'">Start Game</button>
+    <h1>Finance Adventure</h1>
+    <div id="gameStats">
+        <p id="currentMoney">Money: ₹0</p>
+        <p id="savedAmount">Saved: ₹0</p>
+        <p id="goalAmount">Goal: ₹50 for a Toy</p>
+    </div>
+
+    <div class="game-container">
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+        <button class="restart-btn" onclick="restartGame()">Restart Game</button>
+    </div>
+
+    <div id="toySymbol">
+        🎁  <!-- Toy symbol (emoji) -->
+    </div>
+
+    <div id="endMessage">
+        <h2>Game Over!</h2>
+        <p id="resultMessage"></p>
     </div>
 
     <div class="footer">
-        <p>&copy; 2025 Finance Game. All Rights Reserved.</p>
+        <p>&copy; 2025 Finance Adventure. All Rights Reserved.</p>
     </div>
 
+    <script src="game.js"></script>
 </body>
 </html>
