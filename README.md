@@ -101,11 +101,6 @@ Since your game doesn't require any libraries yet, you can keep it simple in the
 This approach keeps the **README** clear and simple but also suggests options for further development or enhancement if desired!
 - [Tools used]:VSCODE
 
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
-
 ### Implementation
 For Software:
 # Installation
@@ -287,25 +282,6 @@ This workflow is designed to make the game easy to understand, engaging, and fun
 
 For Hardware:
 
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Team](Add photo of your team here)
-
-
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
 
 ### Project Demo
 # Video
