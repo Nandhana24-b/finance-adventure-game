@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Game for Kids</title>
+    <!-- Link to Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #ae93ed;
+        }
+        
+        /* Page Layout */
+        .landing-page {
+            height: 100vh;
+            background-image: url('background.jpg'); /* Add a cool background image */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .start-btn {
+            background-color: #ff6200;
+            color: white;
+            font-size: 1.5rem;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeIn 4s ease-in-out;
+        }
+
+        .start-btn:hover {
+            background-color: #e55b00;
+            transform: scale(1.1);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: #555;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            p {
+                font-size: 1.2rem;
+            }
+
+            .start-btn {
+                font-size: 1.2rem;
+                padding: 12px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="landing-page">
+        <h1>Welcome to Finance Adventure!</h1>
+        <p>Learn to manage your money while having fun! Save up for toys, games, and more!</p>
+        <button class="start-btn" onclick="window.location.href='game.html'">Start Game</button>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Finance Game. All Rights Reserved.</p>
+    </div>
+
+</body>
+</html>
