@@ -8,7 +8,7 @@ FINANCE ADVENTURE🎯
                 college of engineering Trivandrum
 
 ### Hosted Project Link
-[mention your project hosted project link here]
+[mention your project hosted project link here]https://nandhana24-b.github.io/finance-adventure-game/
 
 ### Project Description
 This game helps kids learn about finance management in a fun and interactive way. In the game, players earn virtual money by collecting coins and try to reach a goal of saving ₹50 to earn a toy symbol. The game teaches kids the importance of earning money, saving for goals, and managing setbacks when obstacles are encountered. By playing, kids get to understand basic concepts of money saving, goal setting, and the value of delayed gratification, all while having fun!
