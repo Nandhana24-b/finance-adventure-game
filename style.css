@@ -1,0 +1,46 @@
+ /* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    text-align: center;
+}
+
+#gameContainer {
+    margin-top: 30px;
+}
+
+/* Game Stats */
+#gameStats {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Button styles */
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* End Game Message */
+#endMessage {
+    font-size: 20px;
+    color: #ff5722;
+    margin-top: 30px;
+}
