@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSage - Skill Development Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .quote {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .login-container, .signup-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        .toggle-form {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .toggle-form a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .error {
+            color: #dc2626;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Dashboard Styles */
+        .dashboard {
+            display: none;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .category-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .subcategories {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .course-features {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .back-btn {
+            background: #4b5563;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quote">
+            "Whether through formal education, on-the-job training, or self-directed learning, skill development empowers individuals to achieve their goals and contribute effectively in their personal and professional lives"
+        </div>
+
+        <!-- Login Form -->
+        <div class="login-container" id="loginForm">
+            <h2 style="text-align: center; margin-bottom: 20px;">Welcome to SkillSage</h2>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+            </div>
+            <button class="btn" onclick="login()">Login</button>
+            <div class="error" id="loginError"></div>
+            <div class="toggle-form">
+                Don't have an account? <a href="#" onclick="toggleForms()">Sign up</a>
+            </div>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="signup-container" id="signupForm" style="display: none;">
+            <h2 style="text-align: center; margin-bottom: 20px;">Create Account</h2>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="newUsername" placeholder="Choose username">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="newPassword" placeholder="Choose password">
+            </div>
+            <button class="btn" onclick="signup()">Sign Up</button>
+            <div class="error" id="signupError"></div>
+            <div class="toggle-form">
+                Already have an account? <a href="#" onclick="toggleForms()">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+        <h2 style="text-align: center;">Choose Your Learning Path</h2>
+        
+        <!-- Main Categories -->
+        <div class="categories animate__animated animate__fadeIn" id="mainCategories">
+            <div class="category-card" onclick="showSubcategories('technology')">
+                <h3>Technology</h3>
+                <p>Learn programming, web development, and more</p>
+            </div>
+            <div class="category-card" onclick="showSubcategories('business')">
+                <h3>Business & Management</h3>
+                <p>Master business skills and management techniques</p>
+            </div>
+            <div class="category-card" onclick="showSubcategories('entertainment')">
+                <h3>Entertainment</h3>
+                <p>Explore creative arts and digital media</p>
+            </div>
+            <div class="category-card" onclick="showSubcategories('pharmaceutical')">
+                <h3>Pharmaceutical</h3>
+                <p>Study pharmaceutical sciences and healthcare</p>
+            </div>
+        </div>
+
+        <!-- Technology Subcategories -->
+        <div class="subcategories animate__animated animate__fadeIn" id="techSubcategories" style="display: none;">
+            <div class="category-card" onclick="showCourseFeatures('javascript')">
+                <h3>JavaScript</h3>
+                <p>Modern web development with JavaScript</p>
+            </div>
+            <div class="category-card" onclick="showCourseFeatures('python')">
+                <h3>Python</h3>
+                <p>Programming fundamentals with Python</p>
+            </div>
+            <div class="category-card" onclick="showCourseFeatures('html')">
+                <h3>HTML & CSS</h3>
+                <p>Web design and development basics</p>
+            </div>
+        </div>
+
+        <!-- Course Features -->
+        <div class="course-features animate__animated animate__fadeIn" id="courseFeatures" style="display: none;">
+            <div class="feature-card">
+                <h3>Course Duration</h3>
+                <p>12 weeks</p>
+            </div>
+            <div class="feature-card">
+                <h3>Assignments</h3>
+                <p>Weekly projects</p>
+            </div>
+            <div class="feature-card">
+                <h3>Quiz</h3>
+                <p>Interactive tests</p>
+            </div>
+            <div class="feature-card">
+                <h3>Notes</h3>
+                <p>Comprehensive materials</p>
+            </div>
+            <div class="feature-card">
+                <h3>Video Lectures</h3>
+                <p>HD quality content</p>
+            </div>
+            <div class="feature-card">
+                <h3>Interview Prep</h3>
+                <p>Industry preparation</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Store registered users
+        let users = [];
+
+        function toggleForms() {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+            signupForm.style.display = signupForm.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function signup() {
+            const username = document.getElementById('newUsername').value;
+            const password = document.getElementById('newPassword').value;
+            const error = document.getElementById('signupError');
+
+            if (username && password) {
+                users.push({ username, password });
+                error.textContent = 'Account created successfully!';
+                error.style.color = '#16a34a';
+                setTimeout(toggleForms, 1500);
+            } else {
+                error.textContent = 'Please fill all fields';
+                error.style.color = '#dc2626';
+            }
+        }
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const error = document.getElementById('loginError');
+
+            if (username === 'techvibe' && password === 'techvibe' || 
+                users.some(user => user.username === username && user.password === password)) {
+                document.querySelector('.container').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+            } else {
+                error.textContent = 'Invalid username or password';
+            }
+        }
+
+        function showSubcategories(category) {
+            if (category === 'technology') {
+                document.getElementById('mainCategories').style.display = 'none';
+                document.getElementById('techSubcategories').style.display = 'grid';
+            }
+        }
+
+        function showCourseFeatures() {
+            document.getElementById('techSubcategories').style.display = 'none';
+            document.getElementById('courseFeatures').style.display = 'grid';
+        }
+
+        function goBack() {
+            const mainCategories = document.getElementById('mainCategories');
+            const techSubcategories = document.getElementById('techSubcategories');
+            const courseFeatures = document.getElementById('courseFeatures');
+
+            if (courseFeatures.style.display === 'grid') {
+                courseFeatures.style.display = 'none';
+                techSubcategories.style.display = 'grid';
+            } else if (techSubcategories.style.display === 'grid') {
+                techSubcategories.style.display = 'none';
+                mainCategories.style.display = 'grid';
+            }
+        }
+    </script>
+</body>
+</html>
